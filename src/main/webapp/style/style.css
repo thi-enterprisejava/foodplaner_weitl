@@ -1,0 +1,137 @@
+@import url(http://yui.yahooapis.com/pure/0.6.0/pure-min.css);
+@import url(http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css);
+
+body {
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    font-family: Helvetica;
+}
+
+
+
+.label {
+    width: 100%;
+    height: 40%;
+    padding-top: 3pt;
+    padding-left: 100pt;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    color: #464646;
+    font-family: fantasy;
+    font-size: 20pt;
+    background-color: antiquewhite;
+}
+
+.navigation {
+    margin: auto;
+    width: 100%;
+    height: 40%;
+    padding-top: 3pt;
+    padding-right: 15pt;
+    padding-bottom: 3pt;
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: left;
+    color: #464646;
+    font-family: fantasy;
+    font-size: 20pt;
+    background-color: antiquewhite;
+}
+
+.content-head {
+    margin: auto;
+    width: 100%;
+    height: 10%;
+    padding: 20pt;
+    position: absolute;
+    top: 126pt;
+    font-family: fantasy;
+    text-align: center;
+    vertical-align: top;
+    background-color: peru;
+}
+
+.content-info {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    padding: 20pt;
+    position: absolute;
+    top: 200pt;
+    text-align: center;
+    vertical-align: middle;
+    background-color: antiquewhite;
+}
+
+.recipe-navigation {
+    margin: auto;
+    width: 100%;
+    font-size: 18pt;
+    vertical-align: middle;
+}
+
+.content1 {
+    margin: auto;
+    width: 100%;
+    height: 250pt;
+    padding: 20pt;
+    position: absolute;
+    top: 580px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+
+.search {
+    margin: auto;
+    width: 100%;
+    padding: 10pt;
+    background-color: peru;
+    position: absolute;
+    top: 500px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    font-size: 18pt;
+
+}
+.button-home {
+    height: 120pt;
+    font-size: 200%;
+    color: #464646;
+    background: antiquewhite;
+}
+
+.button-home:hover {
+    color: #464646;
+    background: antiquewhite;
+}
+
+
+.button-light {
+    color: #464646;
+    background: antiquewhite;
+}
+
+.button-light:hover {
+    color: peru;
+    background: antiquewhite;
+}
+
+.button-dark {
+    color: #464646;
+    background: peru;
+}
+
+.button-dark:hover {
+    color: antiquewhite;
+    background: peru;
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<body>
+
+<ui:composition template="/template.xhtml">
+    <ui:define name="content">
+
+        <div class="content-head">
+            <h1>Rezepte</h1>
+        </div>
+
+
+        <div class="content-info">
+
+            <div style="align-items: center">
+                <table class="recipe-navigation" style="width:33.33%;">
+                    <tr>
+                        <td>
+                            <h:commandButton value="Sortieren" action="#{search.doSearch}" id="sortierenRecipie" styleClass="button-dark pure-button"/>
+                        </td>
+                        <td>
+                            <div class="recipe-navigation pure-form">
+                                <h:inputText  id="searchText" >
+                                    <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
+                                </h:inputText>
+                                <h:commandButton value="#{msg['search.search.button']}" action="#{search.doSearch}" id="searchButton" styleClass="button-dark pure-button"/>
+                            </div>
+                        </td>
+                        <td>
+                            <h:commandButton value="+" action="#{search.doSearch}" id="newRecipe" styleClass="button-dark pure-button"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+        </div>
+
+</ui:define>
+</ui:composition>
+
+</body>
+</html>
