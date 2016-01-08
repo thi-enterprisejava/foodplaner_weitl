@@ -1,21 +1,28 @@
-package de.thi.foodplaner.web.domain;
+package de.thi.foodplaner.domain;
 
-import de.thi.foodplaner.web.domain.Food;
 
+import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Philipp on 09.11.15.
  */
-public class Recipe {
+public class Recipe implements Serializable{
+
     /******* Variables *******/
     private String name;
     private List<Food> foodList;
     private String description;
 
     /******** Methods ********/
+    public Recipe(){
+        foodList = new LinkedList<Food>();
+    }
 
-
+    public void addFood(Food food){
+        this.foodList.add(food);
+    }
 
     /***** Setter Getter *****/
     public String getName() {

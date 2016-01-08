@@ -1,18 +1,23 @@
-package de.thi.foodplaner.web.domain;
+package de.thi.foodplaner.domain;
+
+import java.io.Serializable;
 
 /**
  * Created by Philipp on 09.11.15.
  */
-public class Food {
+public class Food implements Serializable{
 
     /******* Variables *******/
     private String name;
-    private int amount;
+    private double amount;
     private Unit unit;
 
     /******** Methods ********/
-
-
+    public Food(String name, double amount, Unit unit){
+        this.name = name;
+        this.amount = amount;
+        this.unit = unit;
+    }
 
     /***** Setter Getter *****/
     public String getName() {
@@ -23,16 +28,15 @@ public class Food {
         this.name = name;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
     public Unit getUnit() {
-
         return unit;
     }
 

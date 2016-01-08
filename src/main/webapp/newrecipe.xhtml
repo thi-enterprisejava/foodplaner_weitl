@@ -15,32 +15,62 @@
             <h1>Rezepte</h1>
         </div>
 
-
         <div class="content-info">
+            <h:form styleClass="pure-form pure-form-aligned">
 
-            <div style="align-items: center">
-                <table class="recipe-navigation" style="width:33.33%;">
-                    <tr>
-                        <td>
-                            <h:commandButton value="Sortieren" action="#{search.doSearch}" id="sortierenRecipie" styleClass="button-dark pure-button"/>
-                        </td>
-                        <td>
-                            <div class="recipe-navigation pure-form">
-                                <h:inputText  id="searchText" >
-                                    <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
-                                </h:inputText>
-                                <h:commandButton value="#{msg['search.search.button']}" action="#{search.doSearch}" id="searchButton" styleClass="button-dark pure-button"/>
+                <div class="pure-form pure-form-aligned">
+                    <fieldset>
+                        <h2>Neues Rezept</h2>
+
+                        <div class="pure-control-group">
+                            <h:outputLabel for="name" value="#{msg['newrecipie.recipe.name']}"/>
+                            <h:inputText id="name"
+                                         value="#{newRecipe.recipe.name}"
+                                         validatorMessage="#{msg['add.name.validationMessage']}">
+                                <f:validateRequired/>
+                                <f:validateLength minimum="3" maximum="30"/>
+                            </h:inputText>
+                            <h:message for="name" />
+                        </div>
+
+                        <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
+                            <div class="pure-control-group">
+                                <label>Zutat</label>
+                                <h:outputLabel value="#{food.name}" />
+                                <h:outputLabel value="#{food.amount}" />
+                                <h:outputLabel value="#{food.unit}" />
                             </div>
-                        </td>
-                        <td>
-                            <h:commandButton value="+" action="#{search.doSearch}" id="newRecipe" styleClass="button-dark pure-button"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                        </ui:repeat>
 
+                        <div class="pure-control-group">
+                            <label>Zutat</label>
+                            <div class="pure-u-1-8">
+                                <h:inputText id="foodName" value="#{newRecipe.foodName}" class="pure-input-1" type="text"/>
+                            </div>
+                            <div class="pure-u-1-8">
+                                <h:inputText value="#{newRecipe.foodAmount}" class="pure-input-1" type="text"/>
+                            </div>
+                            <select id="state">
+                                <option>kg</option>
+                                <option>a</option>
+                                <option>l</option>
+                                <option>ml</option>
+                                <option>Stück</option>
+                            </select>
+                                <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="button-dark pure-button"/>
+                        </div>
 
+                        <div class="pure-control-group">
+                            <label>Beschreibung</label>
+                            <h:inputTextarea value="#{newRecipe.recipe.description}" class="pure-input-1-5"/>
+                        </div>
 
+                        <div class="pure-control-group">
+                                <h:commandButton value="#{msg['newrecipie.save.button']}" action="#{newRecipe.doSaveRecipe}" id="saveButton" styleClass="button-dark pure-button"/>
+                        </div>
+                    </fieldset>
+                </div>
+            </h:form>
         </div>
 
 </ui:define>

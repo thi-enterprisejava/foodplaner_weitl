@@ -13,10 +13,10 @@
 
         <h:form prependId="false">
             <div class="search pure-form">
-                    <h:inputText  id="searchText" >
+                    <h:inputText  id="searchText" value="#{home.searchText}">
                         <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
                     </h:inputText>
-                    <h:commandButton value="#{msg['search.search.button']}" action="#{search.doSearch}" id="searchButton" styleClass="button-light pure-button"/>
+                    <h:commandButton value="#{msg['home.search.button']}" action="#{home.doSearch}" id="searchButton" styleClass="button-light pure-button"/>
             </div>
         </h:form>
 

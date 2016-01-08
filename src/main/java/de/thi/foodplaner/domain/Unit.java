@@ -1,4 +1,4 @@
-package de.thi.foodplaner.web.domain;
+package de.thi.foodplaner.domain;
 
 /**
  * Created by Philipp on 09.11.15.
