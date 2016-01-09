@@ -12,7 +12,7 @@ public class Food implements Serializable{
     private double amount;
     private Unit unit;
 
-    /******** Methods ********/
+    /******** Constructor ********/
     public Food(String name, double amount, Unit unit){
         this.name = name;
         this.amount = amount;

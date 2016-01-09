@@ -15,11 +15,12 @@ public class Recipe implements Serializable{
     private List<Food> foodList;
     private String description;
 
-    /******** Methods ********/
+    /******** Constructor ********/
     public Recipe(){
         foodList = new LinkedList<Food>();
     }
 
+    /******** Methods ********/
     public void addFood(Food food){
         this.foodList.add(food);
     }
