@@ -2,7 +2,6 @@ package de.thi.foodplaner.service;
 
 import de.thi.foodplaner.domain.Recipe;
 
-import javax.ejb.Stateless;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -11,8 +10,7 @@ import java.util.logging.Logger;
 /**
  * Created by Philipp on 04.01.16.
  */
-@Stateless
-public class FoodPlanerServiceLocal extends FoodPlanerService{
+public class FoodPlanerServiceLocal {
     /******* Variables *******/
     private final static Logger LOGGER = Logger.getLogger(FoodPlanerServiceLocal.class.getName());
 
@@ -26,13 +24,11 @@ public class FoodPlanerServiceLocal extends FoodPlanerService{
     }
 
     /******** Methods ********/
-    @Override
     public Recipe add(Recipe recipe) {
         this.recipeList.add(recipe);
         return recipe;
     }
 
-    @Override
     public List<Recipe> findByName(String name) {
         LOGGER.log(Level.INFO,"Looking for Recipe with name: " + name);
         List<Recipe> returnList = new LinkedList<Recipe>();

@@ -1,11 +1,12 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.service.FoodPlanerService;
 import de.thi.foodplaner.domain.Food;
 import de.thi.foodplaner.domain.Recipe;
 import de.thi.foodplaner.domain.Unit;
+import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 
-import javax.enterprise.context.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  * Created by Philipp on 25.11.15.
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class NewRecipe implements Serializable {
 
     /******* Variables *******/
@@ -28,13 +29,18 @@ public class NewRecipe implements Serializable {
     private double foodAmount;
     private Unit foodUnit;
 
-    private final FoodPlanerService foodPlanerService;
+    private final FoodPlanerServiceDatabase foodPlanerService;
 
     /******* Constructor *******/
     @Inject
-    public NewRecipe(FoodPlanerService foodPlanerService) {
+    public NewRecipe(FoodPlanerServiceDatabase foodPlanerService) {
         this.foodPlanerService = foodPlanerService;
-        recipe = new Recipe();
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("New cocktail");
+        this.recipe = new Recipe();
     }
 
     /******* Methods *******/

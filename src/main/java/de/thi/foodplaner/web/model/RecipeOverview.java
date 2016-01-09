@@ -1,9 +1,9 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.service.FoodPlanerService;
 import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -13,16 +13,16 @@ import java.util.List;
  * Created by Philipp on 08.01.16.
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class RecipeOverview implements Serializable{
     /******* Variables *******/
-    private final FoodPlanerService foodPlanerService;
+    private final FoodPlanerServiceDatabase foodPlanerService;
     private String searchText;
     private List<Recipe> searchResultList;
 
     /******* Constructor *******/
     @Inject
-    public RecipeOverview(FoodPlanerService foodPlanerService) {
+    public RecipeOverview(FoodPlanerServiceDatabase foodPlanerService) {
         this.foodPlanerService = foodPlanerService;
     }
 
