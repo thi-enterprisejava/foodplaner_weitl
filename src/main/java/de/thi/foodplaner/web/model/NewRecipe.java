@@ -59,10 +59,27 @@ public class NewRecipe implements Serializable {
 
     public String doSaveRecipe() {
         LOGGER.log(Level.INFO,"Saving-process started:" + recipe.getName());
-
         this.foodPlanerService.add(recipe);
 
+        /*
+        if(recipe.getId() == null){
+        }else{
+            this.foodPlanerService.edit(recipe);
+        }*/
+
         return "recipedetail.xhtml?faces-redirect=true&id=" + recipe.getId();
+    }
+
+    public String doRemoveRecipe(){
+        LOGGER.log(Level.INFO,"Removing-process started:" + recipe.getName());
+
+        this.foodPlanerService.remove(recipe);
+
+        return "/recipeOverview.xhtml";
+    }
+
+    public String doEditRecipe(){
+        return "newrecipe.xhtml?faces-redirect=true&id="+ recipe.getId();
     }
 
     public void init() {

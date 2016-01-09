@@ -38,9 +38,10 @@
             <p>
                 #{newRecipe.recipe.description}
             </p>
-
-
-
+            <h:form styleClass="pure-form pure-form-aligned">
+                <h:commandButton value="#{msg['detail.button.remove']}" action="#{newRecipe.doRemoveRecipe}" id="removeButton" styleClass="button-dark pure-button"/>
+                <h:commandButton value="#{msg['detail.button.edit']}" action="#{newRecipe.doEditRecipe}" id="editButton" styleClass="button-dark pure-button"/>
+            </h:form>
         </div>
     </ui:define>
 </ui:composition>

@@ -10,6 +10,10 @@
 
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="id" value="#{newRecipe.id}" />
+            <f:viewAction action="#{newRecipe.init}" />
+        </f:metadata>
 
         <div class="content-head">
             <h1>Rezepte</h1>
