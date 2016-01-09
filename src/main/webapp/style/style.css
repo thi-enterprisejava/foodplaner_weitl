@@ -133,6 +133,10 @@ body {
     background: peru;
 }
 
+.recipie-list-element {
+    color: #464646;
+    background: peru;
+}
 
 a {
     text-decoration: none;

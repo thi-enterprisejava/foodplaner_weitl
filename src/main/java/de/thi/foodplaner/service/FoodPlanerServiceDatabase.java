@@ -46,7 +46,7 @@ public class FoodPlanerServiceDatabase{
         List<Recipe> returnList = new LinkedList<Recipe>();
 
         for(Recipe recipe: findAll()){
-            if(recipe.getName().equals(name)){
+            if(recipe.getName().contains(name)){
                 returnList.add(recipe);
             }
         }
@@ -58,4 +58,7 @@ public class FoodPlanerServiceDatabase{
         return query.getResultList();
     }
 
+    public Recipe findById(Long id){
+        return em.find(Recipe.class, id);
+    }
 }

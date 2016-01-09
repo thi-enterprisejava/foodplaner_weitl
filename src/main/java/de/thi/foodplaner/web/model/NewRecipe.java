@@ -31,6 +31,7 @@ public class NewRecipe implements Serializable {
 
     private final FoodPlanerServiceDatabase foodPlanerService;
 
+    private Long id;
     /******* Constructor *******/
     @Inject
     public NewRecipe(FoodPlanerServiceDatabase foodPlanerService) {
@@ -46,7 +47,6 @@ public class NewRecipe implements Serializable {
     /******* Methods *******/
     public String doAddFood() {
         LOGGER.log(Level.INFO,"Adding new Food: " + foodName + " " + foodAmount);
-        foodUnit = Unit.kg;
 
         recipe.addFood(new Food(foodName, foodAmount, foodUnit));
         foodName = "";
@@ -62,8 +62,18 @@ public class NewRecipe implements Serializable {
 
         this.foodPlanerService.add(recipe);
 
-        return "";
+        return "recipedetail.xhtml?faces-redirect=true&id=" + recipe.getId();
     }
+
+    public void init() {
+        Recipe loadedRecipe = foodPlanerService.findById(id);
+        if(loadedRecipe != null) {
+            this.recipe = loadedRecipe;
+        } else {
+            // TODO LOGGING
+        }
+    }
+
 
     /***** Setter Getter *****/
     public Recipe getRecipe() {
@@ -96,5 +106,13 @@ public class NewRecipe implements Serializable {
 
     public void setFoodUnit(Unit foodUnit) {
         this.foodUnit = foodUnit;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -24,6 +24,7 @@ public class RecipeOverview implements Serializable{
     @Inject
     public RecipeOverview(FoodPlanerServiceDatabase foodPlanerService) {
         this.foodPlanerService = foodPlanerService;
+        this.searchResultList = this.foodPlanerService.findAll();
     }
 
     /******* Methods *******/
