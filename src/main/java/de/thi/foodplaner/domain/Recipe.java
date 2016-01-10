@@ -1,6 +1,7 @@
 package de.thi.foodplaner.domain;
 
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,11 +9,19 @@ import java.util.List;
 /**
  * Created by Philipp on 09.11.15.
  */
+@Entity
 public class Recipe implements Serializable{
 
     /******* Variables *******/
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String name;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Food> foodList;
+
     private String description;
 
     /******** Constructor ********/
