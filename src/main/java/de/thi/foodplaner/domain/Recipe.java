@@ -23,9 +23,15 @@ public class Recipe implements Serializable{
     private List<Food> foodList;
 
     private String description;
+    private String shortDescription;
 
     /******** Constructor ********/
     public Recipe(){
+        foodList = new LinkedList<Food>();
+    }
+
+    public Recipe(String name){
+        this.name = name;
         foodList = new LinkedList<Food>();
     }
 
@@ -57,6 +63,14 @@ public class Recipe implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public Long getId() {

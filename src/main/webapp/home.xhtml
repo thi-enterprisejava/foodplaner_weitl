@@ -11,18 +11,23 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
 
-        <h:form prependId="false">
-            <div class="search pure-form">
-                    <h:inputText  id="searchText" value="#{home.searchText}">
-                        <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
-                    </h:inputText>
-                    <h:commandButton value="#{msg['home.search.button']}" action="#{home.doSearch}" id="searchButton" styleClass="button-light pure-button"/>
+        <h:form class="form-inline" prependId="false">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="form-group">
+                        <h1 class="display-3">Hello, world!</h1>
+                        <p>Hier könnt ihr eure Lieblingsrezepte erstellen und suchen. Lasst euch von anderen Ideen inspirieren.<br/>
+                            Unter Planung könnt ihr euer Menü ganz einfach zusammenstellen und dann direkt die Einkaufsliste generieren!</p>
+
+
+                        <h:inputText  id="searchText" value="#{home.searchText}" class="form-control input-lg">
+                            <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
+                        </h:inputText>
+                        <h:commandButton value="#{msg['home.search.button']}" action="#{home.doSearch}" id="searchButton" class="btn btn-primary btn-lg"/>
+                    </div>
+                </div>
             </div>
         </h:form>
-
-        <div class="content1">
-
-        </div>
 
 </ui:define>
 </ui:composition>

@@ -91,7 +91,6 @@ public class NewRecipe implements Serializable {
         }
     }
 
-
     /***** Setter Getter *****/
     public Recipe getRecipe() {
         return recipe;

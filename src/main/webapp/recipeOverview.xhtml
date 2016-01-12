@@ -11,38 +11,42 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
 
-        <div class="content-head">
-            <h1>Rezepte</h1>
-        </div>
 
-        <div class="content-info">
-            <h:form styleClass="pure-form pure-form-aligned">
-                <div class="recipe-navigation pure-control-group">
-                    <div class="pure-g">
-                            <h:commandButton value="#{msg['recipie.add.button']}" action="/newrecipe.xhtml" id="addRecipieButtonLeft" styleClass="button-dark pure-button"/>
-
-                            <h:inputText  id="searchText" value="#{recipeOverview.searchText}" >
-                                <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
-                            </h:inputText>
-                            <h:commandButton value="#{msg['search.search.button']}" action="#{recipeOverview.doSearch}" id="searchButton" styleClass="button-dark pure-button"/>
-
-                            <h:commandButton value="#{msg['recipie.add.button']}" action="/newrecipe.xhtml" id="addRecipieButton" styleClass="button-dark pure-button"/>
+        <h:form class="form-inline" prependId="false">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="form-group">
+                        <h1 class="display-3">Rezepte</h1>
+                        <h:inputText  id="searchText" value="#{recipeOverview.searchText}" class="form-control input-lg">
+                            <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
+                        </h:inputText>
+                        <h:commandButton value="#{msg['home.search.button']}" action="#{recipeOverview.doSearch}" id="searchButton" class="btn btn-primary btn-lg"/>
+                        <h:commandButton value="#{msg['recipie.add.button']}" action="/newrecipe.xhtml" id="addRecipieButton" styleClass="btn btn-success btn-lg"/>
                     </div>
                 </div>
+            </div>
 
-                <div class="pure-control-group">
+            <div class="container marketing">
+                <hr class="featurette-divider"/>
+
                     <ui:repeat value="#{recipeOverview.searchResultList}" var="recipie">
-                        <div class="pure-control-group">
-                                <div class="pure-u-1 pure-u-md-4-5 recipie-list-element">
-                                        <h:link outcome="recipedetail" value="#{recipie.name}">
-                                            <f:param name="id" value="#{recipie.id}"/>
-                                        </h:link>
-                                </div>
+                        <div class="row featurette">
+                            <img src="images/background.jpg" alt="" width="140" height="140" class="img-circle"/>
+                            <div class="col-md-7">
+                                <h2 class="featurette-heading">
+                                    <h:link outcome="recipedetail" value="#{recipie.name}">
+                                        <f:param name="id" value="#{recipie.id}" class="list-group-item"/>
+                                    </h:link>
+                                </h2>
+                                <p class="lead">#{recipie.shortDescription}</p>
+                            </div>
                         </div>
+                        <hr class="featurette-divider"/>
                     </ui:repeat>
-                </div>
-            </h:form>
-        </div>
+
+
+            </div>
+        </h:form>
 
 </ui:define>
 </ui:composition>

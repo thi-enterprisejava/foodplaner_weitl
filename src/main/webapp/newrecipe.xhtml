@@ -15,68 +15,79 @@
             <f:viewAction action="#{newRecipe.init}" />
         </f:metadata>
 
-        <div class="content-head">
-            <h1>Rezepte</h1>
-        </div>
+        <h:form class="form-inline" prependId="false">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="form-group">
+                        <h1 class="display-3">Neues Rezept</h1>
 
-        <div class="content-info">
-            <h:form styleClass="pure-form pure-form-aligned">
+                        <hr class="featurette-divider"/>
 
-                <div class="pure-form pure-form-aligned">
-                    <fieldset>
-                        <h2>Neues Rezept</h2>
-
-                        <div class="pure-control-group">
-                            <h:outputLabel for="name" value="#{msg['newrecipie.recipe.name']}"/>
+                        <div>
+                            <p>Name</p>
                             <h:inputText id="name"
                                          value="#{newRecipe.recipe.name}"
-                                         validatorMessage="#{msg['add.name.validationMessage']}">
+                                         validatorMessage="#{msg['add.name.validationMessage']}" class="form-control input-lg">
                                 <f:validateRequired/>
                                 <f:validateLength minimum="3" maximum="30"/>
                             </h:inputText>
                             <h:message for="name" />
                         </div>
 
-                        <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
-                            <div class="pure-control-group">
-                                <label>Zutat</label>
-                                <h:outputLabel value="#{food.name}" />
-                                <h:outputLabel value="#{food.amount}" />
-                                <h:outputLabel value="#{food.unit}" />
-                            </div>
-                        </ui:repeat>
+                        <hr class="featurette-divider"/>
 
-                        <div class="pure-control-group">
-                            <label>Zutat</label>
-                            <div class="pure-u-1-8">
-                                <h:inputText id="foodName" value="#{newRecipe.foodName}" class="pure-input-1" type="text"/>
-                            </div>
-                            <div class="pure-u-1-8">
-                                <h:inputText value="#{newRecipe.foodAmount}" class="pure-input-1" type="text"/>
-                            </div>
-                            <h:selectOneMenu value="#{newRecipe.foodUnit}">
-                                <f:selectItem itemValue="kg" itemLabel="kg" />
-                                <f:selectItem itemValue="g" itemLabel="g" />
-                                <f:selectItem itemValue="l" itemLabel="l" />
-                                <f:selectItem itemValue="ml" itemLabel="ml" />
-                                <f:selectItem itemValue="piece" itemLabel="Stück" />
-                            </h:selectOneMenu>
-
-                            <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="button-dark pure-button"/>
+                        <div class="">
+                            <p>Kurzbeschreibung</p>
+                            <h:inputTextarea value="#{newRecipe.recipe.shortDescription}" class="form-control "/>
                         </div>
 
-                        <div class="pure-control-group">
-                            <label>Beschreibung</label>
-                            <h:inputTextarea value="#{newRecipe.recipe.description}" class="pure-input-1-5"/>
+                        <hr class="featurette-divider"/>
+
+                        <div class="">
+                            <p>Zutaten</p>
+                            <ul class="list-group">
+                                <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
+                                        <li class="list-group-item"><p>#{food.name} #{food.amount}#{food.unit}</p></li>
+                                </ui:repeat>
+                            </ul>
+                            <div class="btn-toolbar">
+
+                                <h:inputText id="foodName" value="#{newRecipe.foodName}" class="form-control input-lg" type="text"/>
+                                <h:inputText value="#{newRecipe.foodAmount}" class="form-control input-lg" type="text"/>
+
+                                <h:selectOneMenu value="#{newRecipe.foodUnit}" class="form-control input-lg">
+                                    <f:selectItem itemValue="kg" itemLabel="kg" />
+                                    <f:selectItem itemValue="g" itemLabel="g" />
+                                    <f:selectItem itemValue="l" itemLabel="l" />
+                                    <f:selectItem itemValue="ml" itemLabel="ml" />
+                                    <f:selectItem itemValue="piece" itemLabel="Stück" />
+                                </h:selectOneMenu>
+
+                                <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="btn btn-primary btn-lg"/>
+                            </div>
                         </div>
 
-                        <div class="pure-control-group">
-                                <h:commandButton value="#{msg['newrecipie.save.button']}" action="#{newRecipe.doSaveRecipe}" id="saveButton" styleClass="button-dark pure-button"/>
+                        <hr class="featurette-divider"/>
+
+                        <div class="">
+                            <p>Zubereitung</p>
+                            <h:inputTextarea value="#{newRecipe.recipe.description}" class="form-control "/>
                         </div>
-                    </fieldset>
+
+                        <hr class="featurette-divider"/>
+
+                        <div class="">
+                            <h:commandButton value="#{msg['newrecipie.save.button']}" action="#{newRecipe.doSaveRecipe}" id="saveButton" styleClass="btn btn-primary btn-lg"/>
+                        </div>
+
+                    </div>
                 </div>
-            </h:form>
-        </div>
+            </div>
+        </h:form>
+
+
+
+
 
 </ui:define>
 </ui:composition>

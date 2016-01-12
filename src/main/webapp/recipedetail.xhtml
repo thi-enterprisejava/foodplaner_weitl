@@ -16,33 +16,36 @@
             <f:viewAction action="#{newRecipe.init}" />
         </f:metadata>
 
-        <div class="content-head">
-            <h1>#{newRecipe.recipe.name}</h1>
-        </div>
 
-        <div class="content-info">
+        <h:form class="form-inline" prependId="false">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="form-group">
+                        <h1 class="display-3">#{newRecipe.recipe.name}</h1>
+                        <p>#{newRecipe.recipe.shortDescription}</p>
+                        <p>Zutaten:</p>
+                        <ul class="list-group">
+                            <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-md-4">#{food.name}</div>
+                                        <div class="col-xs-6 col-md-4">#{food.amount} #{food.unit}</div>
+                                    </div>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                        <p>
+                            #{newRecipe.recipe.description}
+                        </p>
 
-            <p>
-                Zutaten:
-            </p>
-            <ul>
-                <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
-                    <li>
-                        #{food.name}
-                        #{food.amount}
-                        #{food.unit}
-                    </li>
-                </ui:repeat>
-            </ul>
+                        <h:commandButton value="#{msg['detail.button.remove']}" action="#{newRecipe.doRemoveRecipe}" id="removeButton" styleClass="btn btn-danger"/>
+                        <h:commandButton value="#{msg['detail.button.edit']}" action="#{newRecipe.doEditRecipe}" id="editButton" styleClass="btn btn-warning"/>
 
-            <p>
-                #{newRecipe.recipe.description}
-            </p>
-            <h:form styleClass="pure-form pure-form-aligned">
-                <h:commandButton value="#{msg['detail.button.remove']}" action="#{newRecipe.doRemoveRecipe}" id="removeButton" styleClass="button-dark pure-button"/>
-                <h:commandButton value="#{msg['detail.button.edit']}" action="#{newRecipe.doEditRecipe}" id="editButton" styleClass="button-dark pure-button"/>
-            </h:form>
-        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+
     </ui:define>
 </ui:composition>
 
