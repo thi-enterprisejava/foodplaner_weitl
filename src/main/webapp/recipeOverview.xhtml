@@ -21,7 +21,7 @@
                             <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
                         </h:inputText>
                         <h:commandButton value="#{msg['home.search.button']}" action="#{recipeOverview.doSearch}" id="searchButton" class="btn btn-primary btn-lg"/>
-                        <h:commandButton value="#{msg['recipie.add.button']}" action="/newrecipe.xhtml" id="addRecipieButton" styleClass="btn btn-success btn-lg"/>
+                        <h:commandButton value="#{msg['recipie.add.button']}" action="/newrecipe.xhtml?faces-redirect=true" id="addRecipieButton" styleClass="btn btn-success btn-lg"/>
                     </div>
                 </div>
             </div>

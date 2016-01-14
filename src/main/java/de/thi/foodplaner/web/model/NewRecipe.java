@@ -40,7 +40,6 @@ public class NewRecipe implements Serializable {
 
     @PostConstruct
     public void postConstruct() {
-        System.out.println("New cocktail");
         this.recipe = new Recipe();
     }
 
