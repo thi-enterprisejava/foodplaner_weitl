@@ -11,7 +11,7 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
 
-        <h:form class="form-inline" prependId="false">
+        <h:form class="form-inline">
             <div class="jumbotron">
                 <div class="container">
                     <div class="form-group">
@@ -19,6 +19,35 @@
                         <p>Hier könnt ihr ganz einfach euer Menü zusammen klicken.<br/> Daraus wird euch direkt die Einkaufsliste generiert!</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="container marketing">
+                <hr class="featurette-divider"/>
+
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading">Vorspeise</h2>
+                        <h:selectOneMenu value="#{planing.first}" class="form-control input-lg">
+                            <f:selectItems value="#{planing.allRecipes}" var="recipe" itemLabel="#{recipe.name}"
+                                           itemValue="#{recipe.id}" />
+                        </h:selectOneMenu>
+
+                        <h2 class="featurette-heading">Hauptspeise</h2>
+                        <h:selectOneMenu value="#{planing.second}" class="form-control input-lg">
+                            <f:selectItems value="#{planing.allRecipes}" var="recipe" itemLabel="#{recipe.name}"
+                                           itemValue="#{recipe.id}" />
+                        </h:selectOneMenu>
+
+                        <h2 class="featurette-heading">Nachspeise</h2>
+                        <h:selectOneMenu value="#{planing.third}" class="form-control input-lg">
+                            <f:selectItems value="#{planing.allRecipes}" var="recipe" itemLabel="#{recipe.name}"
+                                           itemValue="#{recipe.id}" />
+                        </h:selectOneMenu>
+                        <h:commandButton value="#{msg['detail.button.remove']}" action="#{planing.doGo}" id="removeButton" styleClass="btn btn-danger"/>
+
+                    </div>
+                </div>
+                <hr class="featurette-divider"/>
             </div>
         </h:form>
 

@@ -4,7 +4,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
       xml:lang="en" lang="en">
 <body>
 
@@ -31,7 +31,11 @@
 
                     <ui:repeat value="#{recipeOverview.searchResultList}" var="recipie">
                         <div class="row featurette">
-                            <img src="images/background.jpg" alt="" width="140" height="140" class="img-circle"/>
+
+                            <p:graphicImage value="#{imageReader.image}" width="140" height="140" styleClass="img-circle">
+                                <f:param name="id" value="#{recipie.id}" />
+                            </p:graphicImage>
+
                             <div class="col-md-7">
                                 <h2 class="featurette-heading">
                                     <h:link outcome="recipedetail" value="#{recipie.name}">
@@ -43,6 +47,7 @@
                         </div>
                         <hr class="featurette-divider"/>
                     </ui:repeat>
+
 
 
             </div>

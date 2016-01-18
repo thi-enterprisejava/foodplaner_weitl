@@ -7,7 +7,7 @@
     </welcome-file-list>
 
     <login-config>
-        <auth-method>BASIC</auth-method>
+        <auth-method>FORM</auth-method>
         <realm-name>FoodPlanerRealmName</realm-name>
         <form-login-config>
             <form-login-page>/login.xhtml</form-login-page>
@@ -18,8 +18,11 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Authorized Users</web-resource-name>
-            <url-pattern>/newrecipe.xhtml</url-pattern>
             <url-pattern>/api/*</url-pattern>
+            <url-pattern>/newrecipe.xhtml</url-pattern>
+            <url-pattern>/planing.xhtml</url-pattern>
+            <url-pattern>/list.xhtml</url-pattern>
+
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>

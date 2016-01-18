@@ -11,6 +11,11 @@
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
 
+        <f:metadata>
+            <f:viewParam name="id" value="#{listOverview.id}" />
+            <f:viewAction action="#{listOverview.init}" />
+        </f:metadata>
+
         <h:form class="form-inline" prependId="false">
             <div class="jumbotron">
                 <div class="container">
@@ -19,6 +24,16 @@
                         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
                     </div>
                 </div>
+                <ul class="list-group">
+                    <ui:repeat value="#{listOverview.foodList.foodList}" var="food">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-4">#{food.name}</div>
+                                <div class="col-xs-6 col-md-4">#{food.amount} #{food.unit}</div>
+                            </div>
+                        </li>
+                    </ui:repeat>
+                </ul>
             </div>
         </h:form>
 

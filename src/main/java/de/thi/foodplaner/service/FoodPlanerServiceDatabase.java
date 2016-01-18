@@ -1,5 +1,6 @@
 package de.thi.foodplaner.service;
 
+import de.thi.foodplaner.domain.FoodList;
 import de.thi.foodplaner.domain.Recipe;
 
 import javax.ejb.Stateless;
@@ -65,4 +66,15 @@ public class FoodPlanerServiceDatabase{
     public Recipe findById(Long id){
         return em.find(Recipe.class, id);
     }
+
+    public FoodList addFoodList(FoodList list){
+        em.persist(list);
+
+        return list;
+    }
+
+    public FoodList findFoodListById(Long id){
+        return em.find(FoodList.class, id);
+    }
+
 }

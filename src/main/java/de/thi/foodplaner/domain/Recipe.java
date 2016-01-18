@@ -1,6 +1,7 @@
 package de.thi.foodplaner.domain;
 
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import java.util.List;
  * Created by Philipp on 09.11.15.
  */
 @Entity
+@ApplicationScoped
 public class Recipe implements Serializable{
 
     /******* Variables *******/
@@ -24,6 +26,10 @@ public class Recipe implements Serializable{
 
     private String description;
     private String shortDescription;
+
+    @Column(length = 100000)
+    @Lob
+    private byte[] image;
 
     /******** Constructor ********/
     public Recipe(){
@@ -75,5 +81,13 @@ public class Recipe implements Serializable{
 
     public Long getId() {
         return id;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
