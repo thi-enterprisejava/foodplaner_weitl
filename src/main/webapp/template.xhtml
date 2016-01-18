@@ -8,46 +8,23 @@
       xml:lang="en" lang="en">
 <h:head>
     <link rel="stylesheet" href="style/style.css"/>
+    <link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet"/>
 </h:head>
 <h:body>
 
-
-    <div style="background-color:peru; height: 3pt">
+    <div class="nav nav-pills navbar-invert">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/FoodPlaner/home.xhtml">Food Planer</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/FoodPlaner/recipeOverview.xhtml">Rezepte</a></li>
+                <li><a href="/FoodPlaner/planing.xhtml">Planung</a></li>
+                <li><a href="/FoodPlaner/list.xhtml">Liste</a></li>
+                <li><a href="/FoodPlaner/login.xhtml">Login</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="label">
-        <h:form >
-            <h:commandButton action="/home.xhtml" id="homeButton" value="Food Planer" styleClass="button-home pure-button"/>
-        </h:form>
-    </div>
-
-    <div class="navigation pure-form" >
-        <h:form>
-            <h:commandButton action="/recipeOverview.xhtml" id="recipeButton" value="#{msg['home.recipe']}" styleClass="button-light pure-button"/>
-        </h:form>
-    </div>
-
-    <div class="navigation pure-form" >
-        <h:form>
-            <h:commandButton action="/planing.xhtml" id="planingButton" value="Planung" styleClass="button-light pure-button"/>
-        </h:form>
-    </div>
-
-    <div class="navigation pure-form" >
-        <h:form>
-            <h:commandButton action="/list.xhtml" value="Liste" styleClass="button-light pure-button"/>
-        </h:form>
-    </div>
-
-    <div class="navigation pure-form" style="vertical-align: top;padding-right: 3pt">
-        <h:form>
-            <h:commandButton value="Login" styleClass="button-dark pure-button"/>
-        </h:form>
-    </div>
-
-    <!--
-    <h:messages />
-    -->
 
     <ui:insert name="content">
         [Content]

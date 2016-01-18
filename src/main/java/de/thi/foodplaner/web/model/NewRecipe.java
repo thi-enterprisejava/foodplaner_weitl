@@ -4,11 +4,18 @@ import de.thi.foodplaner.domain.Food;
 import de.thi.foodplaner.domain.Recipe;
 import de.thi.foodplaner.domain.Unit;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
+import org.apache.commons.io.IOUtils;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Transient;
+import javax.servlet.http.Part;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +38,11 @@ public class NewRecipe implements Serializable {
 
     private final FoodPlanerServiceDatabase foodPlanerService;
 
+    private Long id;
+
+    @Transient
+    private Part part;
+
     /******* Constructor *******/
     @Inject
     public NewRecipe(FoodPlanerServiceDatabase foodPlanerService) {
@@ -39,14 +51,12 @@ public class NewRecipe implements Serializable {
 
     @PostConstruct
     public void postConstruct() {
-        System.out.println("New cocktail");
         this.recipe = new Recipe();
     }
 
     /******* Methods *******/
     public String doAddFood() {
         LOGGER.log(Level.INFO,"Adding new Food: " + foodName + " " + foodAmount);
-        foodUnit = Unit.kg;
 
         recipe.addFood(new Food(foodName, foodAmount, foodUnit));
         foodName = "";
@@ -59,11 +69,57 @@ public class NewRecipe implements Serializable {
 
     public String doSaveRecipe() {
         LOGGER.log(Level.INFO,"Saving-process started:" + recipe.getName());
+        try {
+            recipe.setImage(IOUtils.toByteArray(part.getInputStream()));
+        }catch (IOException e){
+            //e.printStackTrace();
+            //TODO
+        }
 
-        this.foodPlanerService.add(recipe);
 
-        return "";
+        if(recipe.getId() == null){
+            this.foodPlanerService.add(recipe);
+        }else{
+            this.foodPlanerService.edit(recipe);
+        }
+
+        return "recipedetail.xhtml?faces-redirect=true&id=" + recipe.getId();
     }
+
+    public String doRemoveRecipe(){
+        LOGGER.log(Level.INFO,"Removing-process started:" + recipe.getName());
+
+        this.foodPlanerService.remove(recipe);
+
+        return "/recipeOverview.xhtml";
+    }
+
+    public String doEditRecipe(){
+        return "newrecipe.xhtml?faces-redirect=true&id="+ recipe.getId();
+    }
+
+    public void init() {
+        Recipe loadedRecipe = null;
+        if(id != null) {
+            loadedRecipe = foodPlanerService.findById(id);
+        }
+        if(loadedRecipe != null) {
+            this.recipe = loadedRecipe;
+        } else {
+            // TODO LOGGING
+        }
+    }
+
+    public StreamedContent getImage() {
+        if (this.recipe.getImage() == null) {
+            // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
+            return new DefaultStreamedContent();
+        }
+        else {
+            return new DefaultStreamedContent(new ByteArrayInputStream(this.recipe.getImage()), "image/jpg");
+        }
+    }
+
 
     /***** Setter Getter *****/
     public Recipe getRecipe() {
@@ -96,5 +152,21 @@ public class NewRecipe implements Serializable {
 
     public void setFoodUnit(Unit foodUnit) {
         this.foodUnit = foodUnit;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Part getPart() {
+        return part;
+    }
+
+    public void setPart(Part part) {
+        this.part = part;
     }
 }

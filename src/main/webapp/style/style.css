@@ -2,7 +2,6 @@
 @import url(http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css);
 
 body {
-    background-image: url(../images/background.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -133,6 +132,10 @@ body {
     background: peru;
 }
 
+.recipie-list-element {
+    color: #464646;
+    background: peru;
+}
 
 a {
     text-decoration: none;
