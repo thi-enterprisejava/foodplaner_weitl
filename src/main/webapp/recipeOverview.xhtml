@@ -33,8 +33,11 @@
                 <div class="pure-control-group">
                     <ui:repeat value="#{recipeOverview.searchResultList}" var="recipie">
                         <div class="pure-control-group">
-                            <label>Rezept</label>
-                            <h:outputLabel value="#{recipie.name}" />
+                                <div class="pure-u-1 pure-u-md-4-5 recipie-list-element">
+                                        <h:link outcome="recipedetail" value="#{recipie.name}">
+                                            <f:param name="id" value="#{recipie.id}"/>
+                                        </h:link>
+                                </div>
                         </div>
                     </ui:repeat>
                 </div>

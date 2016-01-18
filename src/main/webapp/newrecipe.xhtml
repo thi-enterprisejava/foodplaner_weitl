@@ -10,6 +10,10 @@
 
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="id" value="#{newRecipe.id}" />
+            <f:viewAction action="#{newRecipe.init}" />
+        </f:metadata>
 
         <div class="content-head">
             <h1>Rezepte</h1>
@@ -50,14 +54,15 @@
                             <div class="pure-u-1-8">
                                 <h:inputText value="#{newRecipe.foodAmount}" class="pure-input-1" type="text"/>
                             </div>
-                            <select id="state">
-                                <option>kg</option>
-                                <option>a</option>
-                                <option>l</option>
-                                <option>ml</option>
-                                <option>Stück</option>
-                            </select>
-                                <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="button-dark pure-button"/>
+                            <h:selectOneMenu value="#{newRecipe.foodUnit}">
+                                <f:selectItem itemValue="kg" itemLabel="kg" />
+                                <f:selectItem itemValue="g" itemLabel="g" />
+                                <f:selectItem itemValue="l" itemLabel="l" />
+                                <f:selectItem itemValue="ml" itemLabel="ml" />
+                                <f:selectItem itemValue="piece" itemLabel="Stück" />
+                            </h:selectOneMenu>
+
+                            <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="button-dark pure-button"/>
                         </div>
 
                         <div class="pure-control-group">
