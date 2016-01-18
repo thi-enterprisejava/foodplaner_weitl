@@ -2,9 +2,6 @@ package de.thi.foodplaner.web;
 
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 import de.thi.foodplaner.web.model.NewRecipe;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mockito;
 
 /**
  * Created by Philipp on 05.01.16.
@@ -13,7 +10,7 @@ public class NewRecipeTest {
 
     NewRecipe testNewRecipe;
     FoodPlanerServiceDatabase mockedService;
-
+/*
     @Before
     public void setUp() throws Exception {
         mockedService = Mockito.mock(FoodPlanerServiceDatabase.class);
@@ -34,7 +31,7 @@ public class NewRecipeTest {
 
     @Test
     public void testLoadingRecipeWithInit() throws Exception {
-        /*testNewRecipe.setId(1L);
+        testNewRecipe.setId(1L);
         when(mockedService.findById(1L))
                 .thenReturn(new Recipe("TestRecipe"));
 
@@ -43,6 +40,7 @@ public class NewRecipeTest {
         Recipe recipe = testNewRecipe.getRecipe();
         assertNotNull(recipe);
         assertEquals(new Recipe("TestRecipe"), recipe);
-        verify(mockedService).findById(1L);*/
+        verify(mockedService).findById(1L);
     }
+*/
 }

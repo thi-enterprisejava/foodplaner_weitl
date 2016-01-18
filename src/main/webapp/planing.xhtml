@@ -43,8 +43,12 @@
                             <f:selectItems value="#{planing.allRecipes}" var="recipe" itemLabel="#{recipe.name}"
                                            itemValue="#{recipe.id}" />
                         </h:selectOneMenu>
-                        <h:commandButton value="#{msg['detail.button.remove']}" action="#{planing.doGo}" id="removeButton" styleClass="btn btn-danger"/>
+                    </div>
 
+                    <hr class="featurette-divider"/>
+
+                    <div class="col-md-7">
+                        <h:commandButton value="Go >" action="#{planing.doGo}" id="generateButton" styleClass="btn btn-success btn-lg"/>
                     </div>
                 </div>
                 <hr class="featurette-divider"/>

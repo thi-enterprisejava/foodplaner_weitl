@@ -9,6 +9,7 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable{
 
+    /******* Variables *******/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,6 +20,7 @@ public class User implements Serializable{
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    /***** Setter Getter *****/
     public String getNickname() {
         return nickname;
     }

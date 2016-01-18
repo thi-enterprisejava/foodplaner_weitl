@@ -5,8 +5,6 @@ import de.thi.foodplaner.domain.Recipe;
 import de.thi.foodplaner.domain.Unit;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 import org.apache.commons.io.IOUtils;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -14,7 +12,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.Transient;
 import javax.servlet.http.Part;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -30,24 +27,20 @@ public class NewRecipe implements Serializable {
     /******* Variables *******/
     private final static Logger LOGGER = Logger.getLogger(NewRecipe.class.getName());
 
+    @Inject
+    private FoodPlanerServiceDatabase foodPlanerService;
+
     private Recipe recipe;
-
-    private String foodName;
-    private double foodAmount;
-    private Unit foodUnit;
-
-    private final FoodPlanerServiceDatabase foodPlanerService;
-
     private Long id;
 
     @Transient
     private Part part;
 
+    private String foodName;
+    private double foodAmount;
+    private Unit foodUnit;
+
     /******* Constructor *******/
-    @Inject
-    public NewRecipe(FoodPlanerServiceDatabase foodPlanerService) {
-        this.foodPlanerService = foodPlanerService;
-    }
 
     @PostConstruct
     public void postConstruct() {
@@ -109,17 +102,6 @@ public class NewRecipe implements Serializable {
             // TODO LOGGING
         }
     }
-
-    public StreamedContent getImage() {
-        if (this.recipe.getImage() == null) {
-            // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
-            return new DefaultStreamedContent();
-        }
-        else {
-            return new DefaultStreamedContent(new ByteArrayInputStream(this.recipe.getImage()), "image/jpg");
-        }
-    }
-
 
     /***** Setter Getter *****/
     public Recipe getRecipe() {

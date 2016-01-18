@@ -20,10 +20,12 @@ public class FoodList implements Serializable {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<Food> foodList;
 
+    /******** Constructor ********/
     public FoodList() {
-        this.foodList = new LinkedList<Food>();
+        this.foodList = new LinkedList<>();
     }
 
+    /******** Methods ********/
     public void add(Food food){
         foodList.add(food);
     }
@@ -32,6 +34,7 @@ public class FoodList implements Serializable {
         foodList.addAll(food);
     }
 
+    /***** Setter Getter *****/
     public List<Food> getFoodList() {
         return foodList;
     }

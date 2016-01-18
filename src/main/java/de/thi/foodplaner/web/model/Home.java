@@ -16,7 +16,7 @@ public class Home implements Serializable{
 
     /******** Methods ********/
     public String doSearch(){
-
+        //TODO evtl hier noch weiterleiten und suche als id
         return "";
     }
 

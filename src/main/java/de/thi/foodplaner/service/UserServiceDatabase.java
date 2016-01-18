@@ -13,24 +13,18 @@ import java.util.logging.Logger;
  */
 @Stateless
 public class UserServiceDatabase {
-    /*******
-     * Variables
-     *******/
+    /******** Variables *******/
     private final static Logger LOGGER = Logger.getLogger(UserServiceDatabase.class.getName());
 
     @PersistenceContext(unitName = "primary")
     private EntityManager em;
 
-    /*******
-     * Constructor
-     *******/
+    /******** Constructor *******/
     public UserServiceDatabase() {
         LOGGER.log(Level.INFO, "UserService created");
     }
 
-    /********
-     * Methods
-     ********/
+    /********* Methods ********/
     public User add(User user) {
         LOGGER.log(Level.INFO, "Adding recipe to database");
 

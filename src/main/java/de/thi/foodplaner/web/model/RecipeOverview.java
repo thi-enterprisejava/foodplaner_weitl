@@ -2,13 +2,10 @@ package de.thi.foodplaner.web.model;
 
 import de.thi.foodplaner.domain.Recipe;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -52,18 +49,5 @@ public class RecipeOverview implements Serializable{
 
     public void setSearchResultList(List<Recipe> searchResultList) {
         this.searchResultList = searchResultList;
-    }
-
-
-    public StreamedContent getImageWithId(Long id) {
-        Recipe r = foodPlanerService.findById(id);
-
-        if (r.getImage() == null) {
-            // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
-            return new DefaultStreamedContent();
-        }
-        else {
-            return new DefaultStreamedContent(new ByteArrayInputStream(r.getImage()), "image/jpg");
-        }
     }
 }
