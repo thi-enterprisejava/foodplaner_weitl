@@ -17,7 +17,7 @@ import java.io.Serializable;
 @ViewScoped
 public class NewUser implements Serializable {
 
-    User user;
+    private User user;
 
     UserServiceDatabase userService;
 
