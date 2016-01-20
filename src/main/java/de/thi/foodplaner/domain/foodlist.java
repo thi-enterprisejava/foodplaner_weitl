@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Philipp on 15.01.16.
  */
 @Entity
-public class FoodList implements Serializable {
+public class FoodList implements Serializable{
 
     /******* Variables *******/
     @Id
@@ -18,29 +18,29 @@ public class FoodList implements Serializable {
     private Long id;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<Food> foodList;
+    private List<Food> foodShoppingList;
 
     /******** Constructor ********/
     public FoodList() {
-        this.foodList = new LinkedList<>();
+        this.foodShoppingList = new LinkedList<>();
     }
 
     /******** Methods ********/
     public void add(Food food){
-        foodList.add(food);
+        foodShoppingList.add(food);
     }
 
     public void addAll(Collection<Food> food){
-        foodList.addAll(food);
+        foodShoppingList.addAll(food);
     }
 
     /***** Setter Getter *****/
-    public List<Food> getFoodList() {
-        return foodList;
+    public List<Food> getFoodShoppingList() {
+        return foodShoppingList;
     }
 
-    public void setFoodList(List<Food> foodList) {
-        this.foodList = foodList;
+    public void setFoodShoppingList(List<Food> foodList) {
+        this.foodShoppingList = foodList;
     }
 
     public Long getId() {

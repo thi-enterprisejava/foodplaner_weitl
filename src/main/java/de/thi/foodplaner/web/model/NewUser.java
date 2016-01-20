@@ -30,7 +30,7 @@ public class NewUser implements Serializable {
 
     /******* Methods *******/
     public String doAddUser() {
-        this.user.setRole(Role.user);
+        this.user.setRole(Role.USER);
         this.userService.add(this.user);
         return "/home.xhtml";
     }

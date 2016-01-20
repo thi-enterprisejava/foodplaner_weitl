@@ -5,6 +5,7 @@ import de.thi.foodplaner.domain.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,9 +13,9 @@ import java.util.logging.Logger;
  * Created by Philipp on 09.01.16.
  */
 @Stateless
-public class UserServiceDatabase {
+public class UserServiceDatabase implements Serializable{
     /******** Variables *******/
-    private final static Logger LOGGER = Logger.getLogger(UserServiceDatabase.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UserServiceDatabase.class.getName());
 
     @PersistenceContext(unitName = "primary")
     private EntityManager em;

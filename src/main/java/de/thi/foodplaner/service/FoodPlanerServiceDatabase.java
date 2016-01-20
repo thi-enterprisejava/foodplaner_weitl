@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @Stateless
 public class FoodPlanerServiceDatabase{
     /******* Variables *******/
-    private final static Logger LOGGER = Logger.getLogger(FoodPlanerServiceDatabase.class.getName());
+    private static final  Logger LOGGER = Logger.getLogger(FoodPlanerServiceDatabase.class.getName());
 
     @PersistenceContext(unitName = "primary")
     private EntityManager em;

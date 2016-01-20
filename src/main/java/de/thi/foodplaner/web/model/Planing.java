@@ -37,6 +37,10 @@ import java.util.List;
     public String doGo() {
         FoodList foodList = new FoodList();
 
+        if(first == 0 || second == 0 || third == 0){
+            return "";
+        }
+
         foodList.addAll(this.foodPlanerService.findById(first).getFoodlist());
         foodList.addAll(this.foodPlanerService.findById(second).getFoodlist());
         foodList.addAll(this.foodPlanerService.findById(third).getFoodlist());

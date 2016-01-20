@@ -36,6 +36,11 @@ public class Recipe implements Serializable{
         foodList = new LinkedList<Food>();
     }
 
+    public Recipe(String name) {
+        this.name = name;
+        foodList = new LinkedList<Food>();
+    }
+
     /******** Methods ********/
     public void addFood(Food food){
         this.foodList.add(food);

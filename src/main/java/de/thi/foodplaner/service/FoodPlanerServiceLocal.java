@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class FoodPlanerServiceLocal {
     /******* Variables *******/
-    private final static Logger LOGGER = Logger.getLogger(FoodPlanerServiceLocal.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(FoodPlanerServiceLocal.class.getName());
 
     private List<Recipe> recipeList;
 

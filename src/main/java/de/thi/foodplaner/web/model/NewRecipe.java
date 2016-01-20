@@ -5,6 +5,8 @@ import de.thi.foodplaner.domain.Recipe;
 import de.thi.foodplaner.domain.Unit;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -14,8 +16,6 @@ import javax.persistence.Transient;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by Philipp on 25.11.15.
@@ -25,9 +25,8 @@ import java.util.logging.Logger;
 public class NewRecipe implements Serializable {
 
     /******* Variables *******/
-    private final static Logger LOGGER = Logger.getLogger(NewRecipe.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(NewRecipe.class);
 
-    @Inject
     private FoodPlanerServiceDatabase foodPlanerService;
 
     private Recipe recipe;
@@ -41,6 +40,10 @@ public class NewRecipe implements Serializable {
     private Unit foodUnit;
 
     /******* Constructor *******/
+    @Inject
+    public NewRecipe(FoodPlanerServiceDatabase foodPlanerService) {
+        this.foodPlanerService = foodPlanerService;
+    }
 
     @PostConstruct
     public void postConstruct() {
@@ -49,24 +52,24 @@ public class NewRecipe implements Serializable {
 
     /******* Methods *******/
     public String doAddFood() {
-        LOGGER.log(Level.INFO,"Adding new Food: " + foodName + " " + foodAmount);
 
         recipe.addFood(new Food(foodName, foodAmount, foodUnit));
         foodName = "";
         foodAmount = 0;
-        foodUnit = Unit.kg;
+        foodUnit = Unit.KG;
 
 
         return "";
     }
 
     public String doSaveRecipe() {
-        LOGGER.log(Level.INFO,"Saving-process started:" + recipe.getName());
+
         try {
-            recipe.setImage(IOUtils.toByteArray(part.getInputStream()));
+            if(part != null) {
+                recipe.setImage(IOUtils.toByteArray(part.getInputStream()));
+            }
         }catch (IOException e){
-            //e.printStackTrace();
-            //TODO
+            LOGGER.error(e.getMessage());
         }
 
 
@@ -80,11 +83,10 @@ public class NewRecipe implements Serializable {
     }
 
     public String doRemoveRecipe(){
-        LOGGER.log(Level.INFO,"Removing-process started:" + recipe.getName());
 
         this.foodPlanerService.remove(recipe);
 
-        return "/recipeOverview.xhtml";
+        return "recipeOverview.xhtml";
     }
 
     public String doEditRecipe(){

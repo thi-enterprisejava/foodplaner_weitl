@@ -29,7 +29,10 @@ public class RecipeOverview implements Serializable{
 
     /******* Methods *******/
     public String doSearch(){
-        this.searchResultList = this.foodPlanerService.findByName(searchText);
+        List<Recipe> foundList = this.foodPlanerService.findByName(searchText);
+        if(foundList != null) {
+            this.searchResultList = foundList;
+        }
 
         return "";
     }
