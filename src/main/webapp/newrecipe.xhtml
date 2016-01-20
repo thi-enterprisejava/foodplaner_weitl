@@ -61,11 +61,11 @@
                                 <h:inputText value="#{newRecipe.foodAmount}" class="form-control input-lg" type="text"/>
 
                                 <h:selectOneMenu value="#{newRecipe.foodUnit}" class="form-control input-lg">
-                                    <f:selectItem itemValue="kg" itemLabel="kg" />
-                                    <f:selectItem itemValue="g" itemLabel="g" />
-                                    <f:selectItem itemValue="l" itemLabel="l" />
-                                    <f:selectItem itemValue="ml" itemLabel="ml" />
-                                    <f:selectItem itemValue="piece" itemLabel="Stück" />
+                                    <f:selectItem itemValue="KG" itemLabel="kg" />
+                                    <f:selectItem itemValue="G" itemLabel="g" />
+                                    <f:selectItem itemValue="L" itemLabel="l" />
+                                    <f:selectItem itemValue="ML" itemLabel="ml" />
+                                    <f:selectItem itemValue="PIECE" itemLabel="Stück" />
                                 </h:selectOneMenu>
 
                                 <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="btn btn-primary btn-lg"/>

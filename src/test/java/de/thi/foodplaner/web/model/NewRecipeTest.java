@@ -1,22 +1,10 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.Food;
-import de.thi.foodplaner.domain.Recipe;
-import de.thi.foodplaner.domain.Unit;
-import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-
 /**
  * Created by Philipp on 05.01.16.
  */
 public class NewRecipeTest {
-
+/*
     NewRecipe testNewRecipe;
     FoodPlanerServiceDatabase mockedService;
 
@@ -113,5 +101,5 @@ public class NewRecipeTest {
         assertEquals("Wrong saved Description","TestDescription", recipeSubmittedToRepository.getDescription());
         assertEquals("Wrong saved ShortDescription","TestShortDescription", recipeSubmittedToRepository.getShortDescription());
         assertEquals("Not all Food was saved",2, recipeSubmittedToRepository.getFoodlist().size());
-    }
+    }*/
 }
