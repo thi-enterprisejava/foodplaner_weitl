@@ -21,6 +21,7 @@
             <url-pattern>/api/*</url-pattern>
             <url-pattern>/planing.xhtml</url-pattern>
             <url-pattern>/list.xhtml</url-pattern>
+            <url-pattern>/newrecipe.xhtml</url-pattern>
 
         </web-resource-collection>
         <auth-constraint>
@@ -28,7 +29,7 @@
         </auth-constraint>
     </security-constraint>
 
-    <security-role id="user">
+    <security-role id="USER">
         <role-name>USER</role-name>
     </security-role>
 

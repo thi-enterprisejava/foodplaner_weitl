@@ -1,6 +1,6 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.domain.recipe.Recipe;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 import org.junit.Before;
 import org.junit.Test;

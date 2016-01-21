@@ -1,4 +1,6 @@
-package de.thi.foodplaner.domain;
+package de.thi.foodplaner.domain.planing;
+
+import de.thi.foodplaner.domain.recipe.Food;
 
 import javax.persistence.*;
 import java.io.Serializable;

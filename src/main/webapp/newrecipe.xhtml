@@ -85,7 +85,8 @@
 
                         <div class="">
                             <h:commandButton value="#{msg['newrecipie.save.button']}" action="#{newRecipe.doSaveRecipe}" id="saveButton" styleClass="btn btn-primary btn-lg"/>
-                            <h:message for="name" />
+                            <h:message for="name" /> <h:outputText value="#{newRecipe.imageMessage}" />
+
                         </div>
 
                     </div>

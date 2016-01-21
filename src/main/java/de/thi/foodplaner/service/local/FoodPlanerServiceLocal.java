@@ -1,7 +1,8 @@
-package de.thi.foodplaner.service;
+package de.thi.foodplaner.service.local;
 
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Recipe;
+import de.thi.foodplaner.service.FoodPlanerService;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  * For first tests only
  *
  */
-public class FoodPlanerServiceLocal extends FoodPlanerService{
+public class FoodPlanerServiceLocal extends FoodPlanerService {
     /******* Variables *******/
     private static final Logger LOGGER = Logger.getLogger(FoodPlanerServiceLocal.class.getName());
 
@@ -74,6 +75,11 @@ public class FoodPlanerServiceLocal extends FoodPlanerService{
 
     @Override
     public FoodList findFoodListById(Long id) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FoodList findLastFoodList() {
         throw new UnsupportedOperationException();
     }
 }

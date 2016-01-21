@@ -1,8 +1,8 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.Food;
-import de.thi.foodplaner.domain.Recipe;
-import de.thi.foodplaner.domain.Unit;
+import de.thi.foodplaner.domain.recipe.Food;
+import de.thi.foodplaner.domain.recipe.Recipe;
+import de.thi.foodplaner.domain.recipe.Unit;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.LogManager;
@@ -14,7 +14,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.Transient;
 import javax.servlet.http.Part;
-import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -34,6 +33,7 @@ public class NewRecipe implements Serializable {
 
     @Transient
     private Part part;
+    String imageMessage;
 
     private String foodName;
     private double foodAmount;
@@ -68,9 +68,15 @@ public class NewRecipe implements Serializable {
 
         try {
             if(part != null) {
-                recipe.setImage(IOUtils.toByteArray(part.getInputStream()));
+                byte[] image = IOUtils.toByteArray(part.getInputStream());
+                if(image.length < 1000000){
+                    recipe.setImage(image);
+                }else{
+                    imageMessage = "Bitte ein kleineres Bild auswählen. ";
+                    return "";
+                }
             }
-        }catch (IOException e){
+        }catch (Exception e){
             LOGGER.error(e.getMessage());
         }
 
@@ -103,7 +109,7 @@ public class NewRecipe implements Serializable {
         if(loadedRecipe != null) {
             this.recipe = loadedRecipe;
         } else {
-            // TODO LOGGING
+            LOGGER.warn("Null return with recipe id: " + id);
         }
     }
 
@@ -154,5 +160,9 @@ public class NewRecipe implements Serializable {
 
     public void setPart(Part part) {
         this.part = part;
+    }
+
+    public String getImageMessage() {
+        return imageMessage;
     }
 }

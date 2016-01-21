@@ -1,4 +1,4 @@
-package de.thi.foodplaner.domain;
+package de.thi.foodplaner.domain.security;
 
 import javax.persistence.*;
 import java.io.Serializable;

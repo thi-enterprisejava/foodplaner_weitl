@@ -1,4 +1,4 @@
-package de.thi.foodplaner.domain;
+package de.thi.foodplaner.domain.recipe;
 
 import java.io.Serializable;
 

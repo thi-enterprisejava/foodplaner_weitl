@@ -1,9 +1,9 @@
 package de.thi.foodplaner.service;
 
-import de.thi.foodplaner.domain.Food;
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Recipe;
-import de.thi.foodplaner.domain.Unit;
+import de.thi.foodplaner.domain.recipe.Food;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Recipe;
+import de.thi.foodplaner.domain.recipe.Unit;
 import de.thi.foodplaner.security.AuthenticatedUser;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;

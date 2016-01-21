@@ -8,7 +8,7 @@ import java.util.concurrent.Callable;
  * Created by Philipp on 21.01.16.
  */
 @Stateless
-@RunAs("user")
+@RunAs("USER")
 @PermitAll
 public class AuthenticatedUser {
 

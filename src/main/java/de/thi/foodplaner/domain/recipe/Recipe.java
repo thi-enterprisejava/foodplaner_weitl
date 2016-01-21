@@ -1,4 +1,4 @@
-package de.thi.foodplaner.domain;
+package de.thi.foodplaner.domain.recipe;
 
 
 import javax.enterprise.context.ApplicationScoped;
@@ -27,7 +27,7 @@ public class Recipe implements Serializable{
     private String description;
     private String shortDescription;
 
-    @Column(length = 100000)
+    @Column(length = 5000000)
     @Lob
     private byte[] image;
 
@@ -88,6 +88,6 @@ public class Recipe implements Serializable{
     }
 
     public void setImage(byte[] image) {
-        this.image = image;
+            this.image = image;
     }
 }

@@ -1,7 +1,7 @@
 package de.thi.foodplaner.service;
 
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Recipe;
 
 import java.io.Serializable;
 import java.util.List;
@@ -26,5 +26,5 @@ public abstract class  FoodPlanerService implements Serializable{
 
     public abstract FoodList addFoodList(FoodList list);
     public abstract FoodList findFoodListById(Long id);
-
+    public abstract FoodList findLastFoodList();
 }

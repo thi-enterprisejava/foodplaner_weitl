@@ -1,7 +1,7 @@
 package de.thi.foodplaner.service;
 
-import de.thi.foodplaner.domain.Role;
-import de.thi.foodplaner.domain.User;
+import de.thi.foodplaner.domain.security.Role;
+import de.thi.foodplaner.domain.security.User;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

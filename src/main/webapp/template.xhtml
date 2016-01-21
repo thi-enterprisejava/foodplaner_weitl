@@ -21,7 +21,7 @@
                 <li><a href="/FoodPlaner/recipeOverview.xhtml">#{msg['template.recipe']}</a></li>
                 <li><a href="/FoodPlaner/planing.xhtml">#{msg['template.planing']}</a></li>
                 <li><a href="/FoodPlaner/list.xhtml">#{msg['template.list']}</a></li>
-                <li><a href="/FoodPlaner/login.xhtml">#{msg['template.login']}</a></li>
+                <li><h:link rendered="#{request.remoteUser == null}" outcome="/login.xhtml">#{msg['template.login']}</h:link></li>
             </ul>
 
             <h:form class="navbar-form pull-right" rendered="#{request.remoteUser != null}" >

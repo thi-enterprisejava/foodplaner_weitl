@@ -1,7 +1,7 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Recipe;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 
 import javax.faces.view.ViewScoped;

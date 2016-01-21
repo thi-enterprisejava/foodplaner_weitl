@@ -1,8 +1,8 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.Food;
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Unit;
+import de.thi.foodplaner.domain.recipe.Food;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Unit;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 
 import javax.faces.view.ViewScoped;
@@ -35,8 +35,7 @@ public class ListOverview implements Serializable{
         if(loadedFoodList != null) {
             this.foodList = loadedFoodList;
         } else {
-            this.foodList = new FoodList();
-            //TODO letzte liste anzeigen
+            this.foodList = foodPlanerService.findLastFoodList();
         }
     }
 

@@ -1,8 +1,8 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.Food;
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Unit;
+import de.thi.foodplaner.domain.recipe.Food;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Unit;
 import org.junit.Before;
 import org.junit.Test;
 
