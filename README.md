@@ -1,5 +1,3 @@
-# foodplaner_weitl
-
 Dokumentation FoodPlaner
 ===================
 
