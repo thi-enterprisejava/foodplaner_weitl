@@ -15,9 +15,14 @@
             <div class="jumbotron">
                 <div class="container">
                     <p>#{msg['newuser.header']}</p>
-                    <h:inputText id="nick" value="#{newUser.user.nickname}" class="form-control input-lg"/>
+                    <h:inputText id="nick" value="#{newUser.user.nickname}" class="form-control input-lg">
+                        <f:passThroughAttribute name="placeholder" value="#{msg['login.nickname']}" />
+                    </h:inputText>
 
-                    <h:inputText id="pw" value="#{newUser.user.password}" type="password" class="form-control input-lg"/>
+
+                    <h:inputText id="pw" value="#{newUser.user.password}" type="password" class="form-control input-lg">
+                        <f:passThroughAttribute name="placeholder" value="#{msg['login.password']}" />
+                    </h:inputText>
 
                     <h:commandButton value="#{msg['newuser.create']}" action="#{newUser.doAddUser}" id="saveButton" styleClass="btn btn-primary btn-lg"/>
             </div>

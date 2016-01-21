@@ -24,12 +24,12 @@
 
         </web-resource-collection>
         <auth-constraint>
-            <role-name>user</role-name>
+            <role-name>USER</role-name>
         </auth-constraint>
     </security-constraint>
 
     <security-role id="user">
-        <role-name>user</role-name>
+        <role-name>USER</role-name>
     </security-role>
 
 </web-app>

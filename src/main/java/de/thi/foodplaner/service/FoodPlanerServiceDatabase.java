@@ -3,6 +3,8 @@ package de.thi.foodplaner.service;
 import de.thi.foodplaner.domain.FoodList;
 import de.thi.foodplaner.domain.Recipe;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,6 +32,8 @@ public class FoodPlanerServiceDatabase extends FoodPlanerService{
 
     /******** Methods ********/
     /** Recipe **/
+
+    @RolesAllowed("USER")
     @Override
     public Recipe add(Recipe recipe) {
         LOGGER.log(Level.INFO,"Adding recipe to database");
@@ -39,17 +43,20 @@ public class FoodPlanerServiceDatabase extends FoodPlanerService{
         return recipe;
     }
 
+    @RolesAllowed("USER")
     @Override
     public void remove(Recipe recipe){
         em.remove(em.contains(recipe) ? recipe : em.merge(recipe));
     }
 
+    @RolesAllowed("USER")
     @Override
     public Recipe edit(Recipe recipe){
         em.merge(em.contains(recipe) ? recipe : em.merge(recipe));
         return recipe;
     }
 
+    @PermitAll
     @Override
     public List<Recipe> findByName(String name) {
         LOGGER.log(Level.INFO,"Looking for Recipe in database with name: " + name);
@@ -63,18 +70,21 @@ public class FoodPlanerServiceDatabase extends FoodPlanerService{
         return returnList;
     }
 
+    @PermitAll
     @Override
     public List<Recipe> findAll(){
         TypedQuery<Recipe> query = em.createQuery("SELECT c FROM Recipe as c", Recipe.class);
         return query.getResultList();
     }
 
+    @PermitAll
     @Override
     public Recipe findById(Long id){
         return em.find(Recipe.class, id);
     }
 
     /** FoodList **/
+    @RolesAllowed("USER")
     @Override
     public FoodList addFoodList(FoodList list){
         em.persist(list);
@@ -82,6 +92,7 @@ public class FoodPlanerServiceDatabase extends FoodPlanerService{
         return list;
     }
 
+    @RolesAllowed("USER")
     @Override
     public FoodList findFoodListById(Long id){
         return em.find(FoodList.class, id);
