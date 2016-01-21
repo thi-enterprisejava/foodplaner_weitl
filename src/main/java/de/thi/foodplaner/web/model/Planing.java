@@ -46,6 +46,7 @@ import java.util.List;
         return "list.xhtml?faces-redirect=true&id=" + foodList.getId();
     }
 
+    /***** Setter Getter *****/
     public Long getFirst() {
         return first;
     }

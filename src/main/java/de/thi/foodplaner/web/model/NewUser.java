@@ -17,26 +17,25 @@ import java.io.Serializable;
 @ViewScoped
 public class NewUser implements Serializable {
 
+    /******* Variables *******/
     private User user;
-
+    @Inject
     UserServiceDatabase userService;
 
-    @Inject
-    public NewUser(UserServiceDatabase userService) {
-        this.userService = userService;
-    }
-
+    /******* Constructor *******/
     @PostConstruct
     public void postConstruct() {
         this.user = new User();
     }
 
+    /******* Methods *******/
     public String doAddUser() {
         this.user.setRole(Role.user);
         this.userService.add(this.user);
         return "/home.xhtml";
     }
 
+    /***** Setter Getter *****/
     public User getUser() {
         return user;
     }

@@ -21,9 +21,11 @@ import java.io.Serializable;
 @ApplicationScoped
 public class ImageReader implements Serializable{
 
+    /******* Variables *******/
     @Inject
     private FoodPlanerServiceDatabase foodPlanerService;
 
+    /******** Methods ********/
     public StreamedContent getImage() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
 

@@ -23,17 +23,18 @@
                         <h1 class="display-3">Einkaufsliste</h1>
                         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
                     </div>
+                    <ul class="list-group">
+                        <ui:repeat value="#{listOverview.foodList.foodList}" var="food">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-4">#{food.name}</div>
+                                    <div class="col-xs-6 col-md-4">#{food.amount} #{food.unit}</div>
+                                </div>
+                            </li>
+                        </ui:repeat>
+                    </ul>
                 </div>
-                <ul class="list-group">
-                    <ui:repeat value="#{listOverview.foodList.foodList}" var="food">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-xs-6 col-md-4">#{food.name}</div>
-                                <div class="col-xs-6 col-md-4">#{food.amount} #{food.unit}</div>
-                            </div>
-                        </li>
-                    </ui:repeat>
-                </ul>
+
             </div>
         </h:form>
 

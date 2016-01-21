@@ -29,6 +29,7 @@ public class FoodPlanerServiceDatabase{
     }
 
     /******** Methods ********/
+    /** Recipe **/
     public Recipe add(Recipe recipe) {
         LOGGER.log(Level.INFO,"Adding recipe to database");
 
@@ -67,6 +68,7 @@ public class FoodPlanerServiceDatabase{
         return em.find(Recipe.class, id);
     }
 
+    /** FoodList **/
     public FoodList addFoodList(FoodList list){
         em.persist(list);
 
