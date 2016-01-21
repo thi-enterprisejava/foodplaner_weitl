@@ -34,6 +34,12 @@ import java.util.List;
         this.allRecipes = this.foodPlanerService.findAll();
     }
 
+
+    /**
+     * adding and saving the food of recipes into a list persist them and change to list site
+     *
+     * @return url to list with id of the FoodList
+     */
     public String doGo() {
         FoodList foodList = new FoodList();
 

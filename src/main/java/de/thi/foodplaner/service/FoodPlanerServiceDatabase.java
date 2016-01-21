@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * Created by Philipp on 09.01.16.
  */
 @Stateless
-public class FoodPlanerServiceDatabase{
+public class FoodPlanerServiceDatabase extends FoodPlanerService{
     /******* Variables *******/
     private static final  Logger LOGGER = Logger.getLogger(FoodPlanerServiceDatabase.class.getName());
 
@@ -30,6 +30,7 @@ public class FoodPlanerServiceDatabase{
 
     /******** Methods ********/
     /** Recipe **/
+    @Override
     public Recipe add(Recipe recipe) {
         LOGGER.log(Level.INFO,"Adding recipe to database");
 
@@ -38,15 +39,18 @@ public class FoodPlanerServiceDatabase{
         return recipe;
     }
 
+    @Override
     public void remove(Recipe recipe){
         em.remove(em.contains(recipe) ? recipe : em.merge(recipe));
     }
 
+    @Override
     public Recipe edit(Recipe recipe){
         em.merge(em.contains(recipe) ? recipe : em.merge(recipe));
         return recipe;
     }
 
+    @Override
     public List<Recipe> findByName(String name) {
         LOGGER.log(Level.INFO,"Looking for Recipe in database with name: " + name);
         List<Recipe> returnList = new LinkedList<Recipe>();
@@ -59,22 +63,26 @@ public class FoodPlanerServiceDatabase{
         return returnList;
     }
 
+    @Override
     public List<Recipe> findAll(){
         TypedQuery<Recipe> query = em.createQuery("SELECT c FROM Recipe as c", Recipe.class);
         return query.getResultList();
     }
 
+    @Override
     public Recipe findById(Long id){
         return em.find(Recipe.class, id);
     }
 
     /** FoodList **/
+    @Override
     public FoodList addFoodList(FoodList list){
         em.persist(list);
 
         return list;
     }
 
+    @Override
     public FoodList findFoodListById(Long id){
         return em.find(FoodList.class, id);
     }

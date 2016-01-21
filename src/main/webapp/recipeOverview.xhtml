@@ -16,12 +16,12 @@
             <div class="jumbotron">
                 <div class="container">
                     <div class="form-group">
-                        <h1 class="display-3">Rezepte</h1>
+                        <h1 class="display-3">#{msg['recipeoverview.header']}</h1>
                         <h:inputText  id="searchText" value="#{recipeOverview.searchText}" class="form-control input-lg">
-                            <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
+                            <f:passThroughAttribute name="placeholder" value="#{msg['recipeoverview.search.placeholder']}" />
                         </h:inputText>
-                        <h:commandButton value="#{msg['home.search.button']}" action="#{recipeOverview.doSearch}" id="searchButton" class="btn btn-primary btn-lg"/>
-                        <h:commandButton value="#{msg['recipie.add.button']}" action="/newrecipe.xhtml?faces-redirect=true" id="addRecipieButton" styleClass="btn btn-success btn-lg"/>
+                        <h:commandButton value="#{msg['recipeoverview.search.button']}" action="#{recipeOverview.doSearch}" id="searchButton" class="btn btn-primary btn-lg"/>
+                        <h:commandButton value="#{msg['recipeoverview.add.button']}" action="/newrecipe.xhtml?faces-redirect=true" id="addRecipieButton" styleClass="btn btn-success btn-lg"/>
                     </div>
                 </div>
             </div>

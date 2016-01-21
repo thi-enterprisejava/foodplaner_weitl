@@ -1,5 +1,6 @@
 package de.thi.foodplaner.service;
 
+import de.thi.foodplaner.domain.FoodList;
 import de.thi.foodplaner.domain.Recipe;
 
 import java.util.LinkedList;
@@ -9,8 +10,12 @@ import java.util.logging.Logger;
 
 /**
  * Created by Philipp on 04.01.16.
+ *
+ *
+ * For first tests only
+ *
  */
-public class FoodPlanerServiceLocal {
+public class FoodPlanerServiceLocal extends FoodPlanerService{
     /******* Variables *******/
     private static final Logger LOGGER = Logger.getLogger(FoodPlanerServiceLocal.class.getName());
 
@@ -24,11 +29,23 @@ public class FoodPlanerServiceLocal {
     }
 
     /******** Methods ********/
+    @Override
     public Recipe add(Recipe recipe) {
         this.recipeList.add(recipe);
         return recipe;
     }
 
+    @Override
+    public void remove(Recipe recipe) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Recipe edit(Recipe recipe) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public List<Recipe> findByName(String name) {
         LOGGER.log(Level.INFO,"Looking for Recipe with name: " + name);
         List<Recipe> returnList = new LinkedList<Recipe>();
@@ -38,5 +55,25 @@ public class FoodPlanerServiceLocal {
             }
         }
         return returnList;
+    }
+
+    @Override
+    public List<Recipe> findAll() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Recipe findById(Long id) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FoodList addFoodList(FoodList list) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FoodList findFoodListById(Long id) {
+        throw new UnsupportedOperationException();
     }
 }

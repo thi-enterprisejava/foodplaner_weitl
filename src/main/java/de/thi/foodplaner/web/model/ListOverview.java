@@ -35,7 +35,8 @@ public class ListOverview implements Serializable{
         if(loadedFoodList != null) {
             this.foodList = loadedFoodList;
         } else {
-            // TODO LOGGING
+            this.foodList = new FoodList();
+            //TODO letzte liste anzeigen
         }
     }
 
@@ -51,24 +52,38 @@ public class ListOverview implements Serializable{
         while(!foodList.isEmpty()){
             Food currentFood = foodList.remove(0);
 
-            returnList.add(containsFoodWithName(foodList, currentFood));
+            returnList.add(reduceToOneFoodWithSameName(foodList, currentFood));
         }
 
         return returnList;
     }
 
-    private Food containsFoodWithName(List<Food> foodList, Food food){
+    /**
+     * Reduce a Food name to one Food and returns that food with new amount - works recursively
+     *
+     * @param foodList list of unfiltered food
+     * @param food food to reduce
+     * @return food with whole amount in one object
+     */
+    private Food reduceToOneFoodWithSameName(List<Food> foodList, Food food){
         for(int i=0; i < foodList.size();i++){
             if(foodList.get(i).getName().equals(food.getName()) && compatibleUnits(foodList.get(i).getUnit(),food.getUnit())){
                 food.setAmount(food.getAmount() + calculateAmountInUnit(foodList.get(i), food.getUnit()));
                 foodList.remove(i);
-                containsFoodWithName(foodList, food);
+                reduceToOneFoodWithSameName(foodList, food);
                 return food;
             }
         }
         return food;
     }
 
+    /**
+     * Check if two Units are compatible to recalculate
+     *
+     * @param a first Unit to compare
+     * @param b second Unit to compare
+     * @return true if the Units are compatible - false otherwise
+     */
     private boolean compatibleUnits(Unit a, Unit b){
         if(a.equals(b)){
             return true;
@@ -83,6 +98,13 @@ public class ListOverview implements Serializable{
         return false;
     }
 
+    /**
+     * Change the Amount with an other Unit if posible
+     *
+     * @param food food with amount
+     * @param newUnit the Unit it should change to
+     * @return the new amount compatible to the newUnit
+     */
     private double calculateAmountInUnit(Food food, Unit newUnit){
         if(newUnit.equals(food.getUnit())){
             return food.getAmount();
@@ -104,11 +126,17 @@ public class ListOverview implements Serializable{
             return food.getAmount() / 1000;
         }
 
-        return -1;
+        return 0;
 
     }
 
-    private List<Food> checkUnit(List<Food> foodList){
+    /**
+     * Checks if the amount can be recalculate into an other Unit inorder to make a better list for the user
+     *
+     * @param foodList all food items to check
+     * @return the new list with better Unit - Amount visualisation
+     */
+    private List<Food> checkUnitAmountCompatibility(List<Food> foodList){
         List<Food> returnList = new LinkedList<>();
 
         for(Food food: foodList){
@@ -142,9 +170,14 @@ public class ListOverview implements Serializable{
         this.id = id;
     }
 
+    /**
+     * Checks the FoodList before returning it
+     *
+     * @return filtered and checked FoodList
+     */
     public FoodList getFoodList() {
         foodList.setFoodShoppingList(filterFoodListWithName(foodList.getFoodShoppingList()));
-        foodList.setFoodShoppingList(checkUnit(foodList.getFoodShoppingList()));
+        foodList.setFoodShoppingList(checkUnitAmountCompatibility(foodList.getFoodShoppingList()));
         return foodList;
     }
 

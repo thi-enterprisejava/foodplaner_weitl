@@ -11,21 +11,4 @@ import java.io.Serializable;
 @SessionScoped
 public class Home implements Serializable{
 
-    /******* Variables *******/
-    String searchText;
-
-    /******** Methods ********/
-    public String doSearch(){
-        //TODO evtl hier noch weiterleiten und suche als id
-        return "";
-    }
-
-    /***** Setter Getter *****/
-    public String getSearchText() {
-        return searchText;
-    }
-
-    public void setSearchText(String searchText) {
-        this.searchText = searchText;
-    }
 }

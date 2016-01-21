@@ -19,7 +19,6 @@
         <web-resource-collection>
             <web-resource-name>Authorized Users</web-resource-name>
             <url-pattern>/api/*</url-pattern>
-            <url-pattern>/newrecipe.xhtml</url-pattern>
             <url-pattern>/planing.xhtml</url-pattern>
             <url-pattern>/list.xhtml</url-pattern>
 

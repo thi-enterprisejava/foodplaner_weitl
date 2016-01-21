@@ -51,9 +51,11 @@ public class NewRecipe implements Serializable {
     }
 
     /******* Methods *******/
-    public String doAddFood() {
 
-        recipe.addFood(new Food(foodName, foodAmount, foodUnit));
+    public String doAddFood() {
+        if(foodName.length() > 2 || foodAmount > 0) {
+            recipe.addFood(new Food(foodName, foodAmount, foodUnit));
+        }
         foodName = "";
         foodAmount = 0;
         foodUnit = Unit.KG;

@@ -28,7 +28,7 @@
                             <f:param name="id" value="#{newRecipe.recipe.id}" />
                         </p:graphicImage>
 
-                        <p>Zutaten:</p>
+                        <p>#{msg['recipedetail.ingredients']}</p>
                         <ul class="list-group">
                             <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
                                 <li class="list-group-item">
@@ -43,8 +43,8 @@
                             #{newRecipe.recipe.description}
                         </p>
 
-                        <h:commandButton value="#{msg['detail.button.remove']}" action="#{newRecipe.doRemoveRecipe}" id="removeButton" styleClass="btn btn-danger"/>
-                        <h:commandButton value="#{msg['detail.button.edit']}" action="#{newRecipe.doEditRecipe}" id="editButton" styleClass="btn btn-warning"/>
+                        <h:commandButton rendered="#{request.remoteUser != null}" value="#{msg['recipedetail.remove']}" action="#{newRecipe.doRemoveRecipe}" id="removeButton" styleClass="btn btn-danger"/>
+                        <h:commandButton rendered="#{request.remoteUser != null}" value="#{msg['recipedetail.edit']}" action="#{newRecipe.doEditRecipe}" id="editButton" styleClass="btn btn-warning"/>
 
                     </div>
                 </div>
