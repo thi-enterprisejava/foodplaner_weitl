@@ -16,7 +16,7 @@ Die Anwendung wurde als Java Enterprise Edition Applikation mit JSF entwickelt. 
 
 
 ## **Aufbau** ##
-Die Anwendung ist in grundsätzlich drei Teile gegliedert. Dabei wird das weit verbreitete MVC-Konzept verwendet. Zudem wurden Services für den Persistieren der Daten erstellt.
+Die Anwendung ist in grundsätzlich drei Teile gegliedert. Dabei wird das weit verbreitete MVC-Konzept verwendet. Zudem wurden Services für die Persistierung der Daten erstellt.
 
 ![enter image description here](http://www.adobe.com/inspire-archive/october2008/articles/article2/images/fig01.jpg)
 
