@@ -1,7 +1,7 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.Role;
-import de.thi.foodplaner.domain.User;
+import de.thi.foodplaner.domain.security.Role;
+import de.thi.foodplaner.domain.security.User;
 import de.thi.foodplaner.service.UserServiceDatabase;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +30,7 @@ public class NewUser implements Serializable {
 
     /******* Methods *******/
     public String doAddUser() {
-        this.user.setRole(Role.user);
+        this.user.setRole(Role.USER);
         this.userService.add(this.user);
         return "/home.xhtml";
     }

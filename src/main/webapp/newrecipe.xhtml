@@ -18,38 +18,30 @@
         <h:form class="form-inline" prependId="false" enctype="multipart/form-data">
             <div class="jumbotron">
                 <div class="container">
-                    <div class="form-group">
-                        <h1 class="display-3">Neues Rezept</h1>
+                    <div class="form-group form-horizontal">
+                        <h1 class="display-3">#{msg['newrecipe.header']}</h1>
 
                         <hr class="featurette-divider"/>
 
                         <div>
-                            <div class="col-sm-4">
-                                <h:inputFile id="part" name="part" value="#{newRecipe.part}"/>
-                            </div>
-
-
-                            <p>Name</p>
-                            <h:inputText id="name"
-                                         value="#{newRecipe.recipe.name}"
-                                         validatorMessage="#{msg['add.name.validationMessage']}" class="form-control input-lg">
+                            <p>#{msg['newrecipe.name']}</p>
+                            <h:inputText id="name" value="#{newRecipe.recipe.name}" validatorMessage="#{msg['newrecipe.add.name.validationMessage']}" class="form-control input-lg">
                                 <f:validateRequired/>
                                 <f:validateLength minimum="3" maximum="30"/>
                             </h:inputText>
-                            <h:message for="name" />
                         </div>
 
                         <hr class="featurette-divider"/>
 
                         <div class="">
-                            <p>Kurzbeschreibung</p>
+                            <p>#{msg['newrecipe.shortdescription']}</p>
                             <h:inputTextarea value="#{newRecipe.recipe.shortDescription}" class="form-control "/>
                         </div>
 
                         <hr class="featurette-divider"/>
 
                         <div class="">
-                            <p>Zutaten</p>
+                            <p>#{msg['newrecipe.ingredients']}</p>
                             <ul class="list-group">
                                 <ui:repeat value="#{newRecipe.recipe.foodlist}" var="food">
                                         <li class="list-group-item"><p>#{food.name} #{food.amount}#{food.unit}</p></li>
@@ -57,15 +49,18 @@
                             </ul>
                             <div class="btn-toolbar">
 
-                                <h:inputText id="foodName" value="#{newRecipe.foodName}" class="form-control input-lg" type="text"/>
-                                <h:inputText value="#{newRecipe.foodAmount}" class="form-control input-lg" type="text"/>
+                                <h:inputText id="foodName" value="#{newRecipe.foodName}" validatorMessage="#{msg['add.name.validationMessage']}" class="form-control input-lg" type="text">
+                                </h:inputText>
+
+                                <h:inputText id="foodAmount" value="#{newRecipe.foodAmount}" validatorMessage="#{msg['add.name.validationMessage']}" class="form-control input-lg" type="text">
+                                </h:inputText>
 
                                 <h:selectOneMenu value="#{newRecipe.foodUnit}" class="form-control input-lg">
-                                    <f:selectItem itemValue="kg" itemLabel="kg" />
-                                    <f:selectItem itemValue="g" itemLabel="g" />
-                                    <f:selectItem itemValue="l" itemLabel="l" />
-                                    <f:selectItem itemValue="ml" itemLabel="ml" />
-                                    <f:selectItem itemValue="piece" itemLabel="Stück" />
+                                    <f:selectItem itemValue="KG" itemLabel="kg" />
+                                    <f:selectItem itemValue="G" itemLabel="g" />
+                                    <f:selectItem itemValue="L" itemLabel="l" />
+                                    <f:selectItem itemValue="ML" itemLabel="ml" />
+                                    <f:selectItem itemValue="PIECE" itemLabel="Stück" />
                                 </h:selectOneMenu>
 
                                 <h:commandButton value="#{msg['newrecipie.recipe.food.button']}" action="#{newRecipe.doAddFood}" id="addFoodButton" styleClass="btn btn-primary btn-lg"/>
@@ -75,25 +70,29 @@
                         <hr class="featurette-divider"/>
 
                         <div class="">
-                            <p>Zubereitung</p>
+                            <p>#{msg['newrecipe.description']}</p>
                             <h:inputTextarea value="#{newRecipe.recipe.description}" class="form-control "/>
                         </div>
 
                         <hr class="featurette-divider"/>
 
                         <div class="">
+                            <p>#{msg['newrecipe.picture']}</p>
+                            <h:inputFile type="file" id="part" name="part" value="#{newRecipe.part}" />
+                        </div>
+
+                        <hr class="featurette-divider"/>
+
+                        <div class="">
                             <h:commandButton value="#{msg['newrecipie.save.button']}" action="#{newRecipe.doSaveRecipe}" id="saveButton" styleClass="btn btn-primary btn-lg"/>
+                            <h:message for="name" /> <h:outputText value="#{newRecipe.imageMessage}" />
+
                         </div>
 
                     </div>
                 </div>
             </div>
         </h:form>
-
-
-
-
-
 </ui:define>
 </ui:composition>
 

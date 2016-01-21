@@ -18,12 +18,25 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/FoodPlaner/recipeOverview.xhtml">Rezepte</a></li>
-                <li><a href="/FoodPlaner/planing.xhtml">Planung</a></li>
-                <li><a href="/FoodPlaner/list.xhtml">Liste</a></li>
-                <li><a href="/FoodPlaner/login.xhtml">Login</a></li>
+                <li><a href="/FoodPlaner/recipeOverview.xhtml">#{msg['template.recipe']}</a></li>
+                <li><a href="/FoodPlaner/planing.xhtml">#{msg['template.planing']}</a></li>
+                <li><a href="/FoodPlaner/list.xhtml">#{msg['template.list']}</a></li>
+                <li><h:link rendered="#{request.remoteUser == null}" outcome="/login.xhtml">#{msg['template.login']}</h:link></li>
             </ul>
+
+            <h:form class="navbar-form pull-right" rendered="#{request.remoteUser != null}" >
+                <div class="form-group">
+                    <p class="form-control-static">
+                        <h:outputText value="${msg['template.loggedin']} ${request.remoteUser}"/>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <h:commandButton type="submit" class="btn btn-primary" action="#{home.logout}" value="#{msg['template.logout']}"/>
+                </div>
+            </h:form>
+
         </div>
+
     </div>
 
     <ui:insert name="content">

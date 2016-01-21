@@ -19,18 +19,18 @@
         <web-resource-collection>
             <web-resource-name>Authorized Users</web-resource-name>
             <url-pattern>/api/*</url-pattern>
-            <url-pattern>/newrecipe.xhtml</url-pattern>
             <url-pattern>/planing.xhtml</url-pattern>
             <url-pattern>/list.xhtml</url-pattern>
+            <url-pattern>/newrecipe.xhtml</url-pattern>
 
         </web-resource-collection>
         <auth-constraint>
-            <role-name>user</role-name>
+            <role-name>USER</role-name>
         </auth-constraint>
     </security-constraint>
 
-    <security-role id="user">
-        <role-name>user</role-name>
+    <security-role id="USER">
+        <role-name>USER</role-name>
     </security-role>
 
 </web-app>

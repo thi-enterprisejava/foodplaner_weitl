@@ -1,11 +1,10 @@
 package de.thi.foodplaner.service;
 
-import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Recipe;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by Philipp on 29.12.15.
@@ -13,15 +12,19 @@ import java.util.logging.Logger;
 public abstract class  FoodPlanerService implements Serializable{
 
     /******* Variables *******/
-    private final static Logger LOGGER = Logger.getLogger(FoodPlanerService.class.getName());
 
     /******* Constructor *******/
-    public FoodPlanerService(){
-        LOGGER.log(Level.INFO,"FoodPlanerService created");
-    }
 
     /******** Methods ********/
     public abstract Recipe add(Recipe recipe);
-    public abstract List<Recipe> findByName(String name);
+    public abstract void remove(Recipe recipe);
+    public abstract Recipe edit(Recipe recipe);
 
+    public abstract List<Recipe> findByName(String name);
+    public abstract List<Recipe> findAll();
+    public abstract Recipe findById(Long id);
+
+    public abstract FoodList addFoodList(FoodList list);
+    public abstract FoodList findFoodListById(Long id);
+    public abstract FoodList findLastFoodList();
 }

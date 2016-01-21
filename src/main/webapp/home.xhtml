@@ -15,15 +15,8 @@
             <div class="jumbotron">
                 <div class="container">
                     <div class="form-group">
-                        <h1 class="display-3">Hello, world!</h1>
-                        <p>Hier könnt ihr eure Lieblingsrezepte erstellen und suchen. Lasst euch von anderen Ideen inspirieren.<br/>
-                            Unter Planung könnt ihr euer Menü ganz einfach zusammenstellen und dann direkt die Einkaufsliste generieren!</p>
-
-
-                        <h:inputText  id="searchText" value="#{home.searchText}" class="form-control input-lg">
-                            <f:passThroughAttribute name="placeholder" value="#{msg['search.placeholder']}" />
-                        </h:inputText>
-                        <h:commandButton value="#{msg['home.search.button']}" action="#{home.doSearch}" id="searchButton" class="btn btn-primary btn-lg"/>
+                        <h1 class="display-3">#{msg['home.welcome']}</h1>
+                        <p>#{msg['home.welcome.text.1']}<br/>#{msg['home.welcome.text.2']}</p>
                     </div>
                 </div>
             </div>

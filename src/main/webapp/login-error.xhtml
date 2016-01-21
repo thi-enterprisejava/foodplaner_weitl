@@ -10,11 +10,10 @@
 
 <ui:composition template="/template.xhtml">
     <ui:define name="content">
-
         <h:form class="form-inline" prependId="false">
             <div class="jumbotron">
                 <div class="container">
-                    <p>Das Passwort oder der Nicname waren falsch. Bitte veruchen sie es erneut.</p>
+                    <p>#{msg['login.error.message']}</p>
                 </div>
             </div>
         </h:form>

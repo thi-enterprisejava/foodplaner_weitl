@@ -1,7 +1,7 @@
 package de.thi.foodplaner.web.model;
 
-import de.thi.foodplaner.domain.FoodList;
-import de.thi.foodplaner.domain.Recipe;
+import de.thi.foodplaner.domain.planing.FoodList;
+import de.thi.foodplaner.domain.recipe.Recipe;
 import de.thi.foodplaner.service.FoodPlanerServiceDatabase;
 
 import javax.faces.view.ViewScoped;
@@ -34,8 +34,18 @@ import java.util.List;
         this.allRecipes = this.foodPlanerService.findAll();
     }
 
+
+    /**
+     * adding and saving the food of recipes into a list persist them and change to list site
+     *
+     * @return url to list with id of the FoodList
+     */
     public String doGo() {
         FoodList foodList = new FoodList();
+
+        if(first == 0 || second == 0 || third == 0){
+            return "";
+        }
 
         foodList.addAll(this.foodPlanerService.findById(first).getFoodlist());
         foodList.addAll(this.foodPlanerService.findById(second).getFoodlist());
