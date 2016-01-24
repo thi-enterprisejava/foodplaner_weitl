@@ -3,7 +3,7 @@
 
 Der FoodPlaner ermöglicht das Speichern von Rezepten und das Planen eines Essens. Dazu können Rezepte ausgewählt werden, um anschließend eine Einkaufsliste anzusehen.
 
-Der FoodPlaner ist hier verfügbar: 
+Der FoodPlaner ist hier verfügbar: http://46.101.199.112:8080/FoodPlaner/home.xhtml
 
 
 ----------
@@ -16,7 +16,7 @@ Die Anwendung wurde als Java Enterprise Edition Applikation mit JSF entwickelt. 
 
 
 ## **Aufbau** ##
-Die Anwendung ist in grundsätzlich drei Teile gegliedert. Dabei wird das weit verbreitete MVC-Konzept verwendet. Zudem wurden Services für die Persistierung der Daten erstellt.
+Die Anwendung ist grundsätzlich drei Teile gegliedert. Dabei wird das weit verbreitete MVC-Konzept verwendet. Zudem wurden Services für die Persistierung der Daten erstellt.
 
 ![enter image description here](http://www.adobe.com/inspire-archive/october2008/articles/article2/images/fig01.jpg)
 
@@ -63,7 +63,7 @@ Die FoodList speichert in einer internen Liste alle Bestandteile der ausgewählt
 
 **User**
 
-Der User wird zum anmelden und registrieren eines Benutzers benötigt. Dabei werden verschiedene Informationen gespeichert:
+Der User wird zum Anmelden und Registrieren eines Benutzers benötigt. Dabei werden verschiedene Informationen gespeichert:
 
  - Nickname
  - Passwort (Hashed)
@@ -127,7 +127,7 @@ Diese Seite zeigt an, dass falsche Informationen beim Anmelden eingegeben wurden
 
 **newuser**
 
-Beim anlegen eines neuen Users können zwei Informationen angegeben werden. Der Nickname und das Passwort, anschließend wir ein neuer Nutzer mit der Rolle "User" angelegt.
+Beim Anlegen eines neuen Users können zwei Informationen angegeben werden. Der Nickname und das Passwort, anschließend wir ein neuer Nutzer mit der Rolle "User" angelegt.
 
 ## Controller ##
 Der Controller verwaltet die Logik und setzt auf den jeweiligen Präsentationsdaten auf: 
